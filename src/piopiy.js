@@ -47,6 +47,7 @@ export default class extends EventEmitter {
     login ( user_id, password ) {
 
         let _this = this;
+        let sbc_region = 'supersbc.telecmi.com';
         if ( _.isString( user_id ) && _.isString( password ) ) {
 
 
