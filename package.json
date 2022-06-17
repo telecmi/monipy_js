@@ -1,7 +1,7 @@
 {
   "name": "piopiy-supervisor-js",
   "title": "PIOPIY",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "PIOPIY supervisor javascript browser sdk",
   "main": "index.js",
   "directories": {
