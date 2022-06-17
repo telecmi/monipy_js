@@ -9,7 +9,7 @@ PIOPIY supervisor JS SDK allows you to barge ongoing call.
 The PIOPIY SDK object needs to be initialized.
 
 ```js
-var piopiy = new PIOPIY( {
+var piopiy = new SPIOPIY( {
         name: 'Display Name',
         debug: false,
         autoplay: true,
