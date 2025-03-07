@@ -4,18 +4,16 @@ module.exports = {
     target: "web",
     entry: './src/index.js',
     output: {
-        filename: 'piopiy.min.js',
+        filename: 'monipy.min.js',
         path: path.resolve( __dirname, 'dist' ),
         libraryTarget: 'var',
-        library: 'SPIOPIY'
+        library: 'MONIPY'
     },
     devServer: {
-        contentBase: path.resolve( __dirname, "dist" ),
-        watchContentBase: true,
+        static: path.resolve( __dirname, "dist" ),
         compress: true,
+        open: true,
         port: 9001,
-        watchOptions: {
-            poll: true
-        }
+        hot: true
     }
 };

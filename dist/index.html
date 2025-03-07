@@ -8,9 +8,9 @@
     <h1>Test Murugan</h1>
 
 </dody>
-<script src="piopiy.min.js" type="text/javascript"></script>
+<script src="monipy.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-    var piopiy = new SPIOPIY( {
+    var monipy = new MONIPY( {
         name: 'murugan',
         debug: false,
         autoplay: true,
@@ -19,78 +19,79 @@
     } );
 
 
-    piopiy.login( 'xxxxx', 'xxxx' )
+    monipy.login( 'xxxx', 'xxxxx' )
 
-    piopiy.on( 'login', function ( object ) {
+    monipy.on( 'login', function ( object ) {
         console.log( object );
     } );
 
-    piopiy.on( 'logout', function ( object ) {
+    monipy.on( 'logout', function ( object ) {
         console.log( object );
     } )
 
-    piopiy.on( 'loginFailed', function ( object ) {
+    monipy.on( 'loginFailed', function ( object ) {
         console.log( object );
     } )
 
-    piopiy.on( 'error', function ( object ) {
+    monipy.on( 'error', function ( object ) {
         console.log( object );
     } )
-    piopiy.on( 'ended', function ( object ) {
-        console.log( object );
-    } )
-
-    piopiy.on( 'rejected', function ( object ) {
+    monipy.on( 'ended', function ( object ) {
         console.log( object );
     } )
 
-    piopiy.on( 'answered', function ( object ) {
+    monipy.on( 'rejected', function ( object ) {
         console.log( object );
     } )
 
-    piopiy.on( 'hangup', function ( object ) {
+    monipy.on( 'answered', function ( object ) {
         console.log( object );
     } )
 
-    piopiy.on( 'mediaFailed', function ( object ) {
+    monipy.on( 'hangup', function ( object ) {
         console.log( object );
     } )
 
-    piopiy.on( 'inComingCall', function ( object ) {
+    monipy.on( 'mediaFailed', function ( object ) {
         console.log( object );
+    } )
+
+    monipy.on( 'inComingCall', function ( object ) {
+        console.log( object );
+        piopiy.answer();
 
     } )
 
-    piopiy.on( 'ringing', ( e ) => {
+    monipy.on( 'ringing', ( e ) => {
         console.log( e )
     } )
 
-    piopiy.on( 'dtmf', ( e ) => {
-
-        console.log( e )
-
-    } );
-
-    piopiy.on( 'hold', ( e ) => {
+    monipy.on( 'dtmf', ( e ) => {
 
         console.log( e )
 
     } );
 
-    piopiy.on( 'unhold', ( e ) => {
+    monipy.on( 'hold', ( e ) => {
 
         console.log( e )
 
     } );
 
-    piopiy.on( 'missed', ( e ) => {
+    monipy.on( 'unhold', ( e ) => {
+
+        console.log( e )
+
+    } );
+
+    monipy.on( 'missed', ( e ) => {
         console.log( e )
     } )
-    piopiy.on( 'trying', ( e ) => {
+    monipy.on( 'trying', ( e ) => {
         console.log( e )
     } )
 
-    piopiy.on( 'callStream', ( e ) => {
+    monipy.on( 'callStream', ( e ) => {
         console.log( e )
     } )
 </script>

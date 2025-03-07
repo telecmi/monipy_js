@@ -111,22 +111,6 @@ export default class {
     }
 
 
-    terminate ( ua, _this ) {
-
-        if ( _.isEmpty( ua._sessions ) ) {
-
-            _this.emit( 'error', { code: 1002, status: 'call not found' } )
-            return;
-        }
-
-        if ( cmi_session.isEnded() ) {
-            _this.emit( 'error', { code: 1002, status: 'call already ended' } )
-            return;
-        }
-
-
-        cmi_session.terminate();
-    }
 
     dtmf ( no, ua, _this ) {
 
@@ -242,7 +226,7 @@ export default class {
     }
 
 
-    onmute ( ua, _this ) {
+    onmute ( ua, ) {
 
         if ( _.isEmpty( ua._sessions ) ) {
 
@@ -260,7 +244,7 @@ export default class {
     }
 
 
-    onhold ( ua, _this ) {
+    onhold ( ua, ) {
 
         if ( _.isEmpty( ua._sessions ) ) {
 
@@ -354,7 +338,7 @@ export default class {
                 return;
             }
 
-            var type = ( e.originator == 'local' ) ? 'incoming' : 'outgoing';
+
             _this.emit( 'answered', { code: 200, status: 'answered' } )
         } );
 
@@ -365,7 +349,7 @@ export default class {
                 return;
             }
 
-            var type = ( e.originator == 'local' ) ? 'incoming' : 'outgoing';
+
             _this.emit( 'answered', { code: 200, status: 'answered' } )
         } );
 

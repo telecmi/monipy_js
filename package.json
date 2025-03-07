@@ -1,16 +1,20 @@
 {
-  "name": "piopiy-supervisor-js",
-  "title": "PIOPIY",
-  "version": "0.6.0",
-  "description": "PIOPIY supervisor javascript browser sdk",
-  "main": "index.js",
+  "name": "MONIPY",
+  "title": "PIOPIY Monitor",
+  "version": "0.7.0",
+  "description": "PIOPIY monitor call javascript browser sdk",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test",
     "build": "webpack",
-    "start": "webpack-dev-server --watch"
+    "ts-build": "tsc",
+    "start": "webpack serve --mode development",
+    "build-node": "babel src --out-dir lib --extensions .js",
+    "start-node": "node lib/index.js",
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -28,12 +32,23 @@
   },
   "homepage": "https://github.com/telecmi/piopiy_super_js#readme",
   "devDependencies": {
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.2",
+    "@babel/preset-typescript": "^7.24.7",
+    "@babel/register": "^7.24.6",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-watch": "^7.8.1",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.5.4",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "jssip": "^3.9.0",
+    "jssip": "^3.10.1",
     "lodash-es": "^4.17.21"
   }
 }
