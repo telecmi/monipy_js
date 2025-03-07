@@ -1,7 +1,7 @@
 {
-  "name": "MONIPY",
+  "name": "monipy",
   "title": "PIOPIY Monitor",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "PIOPIY monitor call javascript browser sdk",
   "main": "lib/index.js",
   "directories": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/telecmi/piopiy_super_js.git"
+    "url": "git+https://github.com/telecmi/monipy_js.git"
   },
   "keywords": [
     "piopiy",
@@ -28,9 +28,9 @@
   "author": "TeleCMI",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/telecmi/piopiy_super_js/issues"
+    "url": "https://github.com/telecmi/monipy_js/issues"
   },
-  "homepage": "https://github.com/telecmi/piopiy_super_js#readme",
+  "homepage": "https://github.com/telecmi/monipy_js#readme",
   "devDependencies": {
     "@babel/cli": "^7.24.8",
     "@babel/core": "^7.25.2",

@@ -1,197 +1,192 @@
-# PIOPIY Client JS SDK for voice
+# MONIPY Client JS SDK for Voice
 
-PIOPIY supervisor JS SDK allows you to barge ongoing call.  
+MONIPY Supervisor JS SDK allows you to barge into an ongoing call.  
 
 # Get Started
 
-## Initializing the PIOPIY SDK Object
+## Installation
 
-The PIOPIY SDK object needs to be initialized.
+You can install MONIPY using npm:
+
+```sh
+npm i monipy
+```
+
+## Initializing the MONIPY SDK Object
+
+The MONIPY SDK object needs to be initialized.
 
 ```js
-var piopiy = new SPIOPIY( {
-        name: 'Display Name',
+var monipy = new MONIPY( {
+        name: 'Kiara',
         debug: false,
         autoplay: true,
+        autoReboot: false,
         ringTime: 60
     } );
 ```
 
 #### Configuration Parameters
 
-Below is the configuration parameters
+Below are the configuration parameters:
 
 | Attribute  | Description                                 | Allowed Values | Default Value |
 | ---        | ---                                         | ---            | ---           |
 | name       | Your Display Name in App                    | string         | null          |
 | debug      | Enable debug message in JS log              | true, false    | false         |
 | autoplay   | Enable speaker access to your device        | true, false    | true          |
+| autoReboot | Auto restart in case of failure             | true, false    | false         |
 | ringTime   | Your incoming call ringing time in seconds  | number         | 60            |
-
 
 ## Login
 
 Validate your login ID and password.
 
 ```js
-piopiy.login('YOUR_LOGIN_ID','YOUR_PASSWORD');
+monipy.login('YOUR_LOGIN_ID','YOUR_PASSWORD');
+```
+
+#### Event Listeners
+
+```js
+monipy.on( 'login', function ( object ) {
+    console.log( object );
+} );
+
+monipy.on( 'logout', function ( object ) {
+    console.log( object );
+} );
+
+monipy.on( 'loginFailed', function ( object ) {
+    console.log( object );
+} );
+
+monipy.on( 'error', function ( object ) {
+    console.log( object );
+} );
+
+monipy.on( 'ended', function ( object ) {
+    console.log( object );
+} );
+
+monipy.on( 'rejected', function ( object ) {
+    console.log( object );
+} );
+
+monipy.on( 'answered', function ( object ) {
+    console.log( object );
+} );
+
+monipy.on( 'hangup', function ( object ) {
+    console.log( object );
+} );
+
+monipy.on( 'mediaFailed', function ( object ) {
+    console.log( object );
+} );
+
+monipy.on( 'inComingCall', function ( object ) {
+    console.log( object );
+    monipy.answer();
+} );
+
+monipy.on( 'ringing', ( e ) => {
+    console.log( e );
+} );
+
+monipy.on( 'dtmf', ( e ) => {
+    console.log( e );
+} );
+
+monipy.on( 'hold', ( e ) => {
+    console.log( e );
+} );
+
+monipy.on( 'unhold', ( e ) => {
+    console.log( e );
+} );
+
+monipy.on( 'missed', ( e ) => {
+    console.log( e );
+} );
+
+monipy.on( 'trying', ( e ) => {
+    console.log( e );
+} );
+
+monipy.on( 'callStream', ( e ) => {
+    console.log( e );
+} );
 ```
 
 #### HTTP status codes
 
-PIOPIY platform represents the following status code to identify the errors.
+MONIPY platform represents the following status codes to identify errors.
 
 | Status code | Description                                        |
 | ---         | ---                                                |
-| 200         | You have Logged in successfully                    |
-| 401         | Your Login ID or Password is invalid, Authenication failed |
+| 200         | You have logged in successfully                    |
+| 401         | Your Login ID or Password is invalid, authentication failed |
 | 1001        | You have already logged in                         |
 
-
-                           |
-
-
-## Answer call
+## Answer Call
 
 Answer an incoming call.
 
 ```js
-piopiy.answer();
+monipy.answer();
 ```
 
 #### HTTP status codes
-
-PIOPIY platform represents the following status code to identify the errors.
 
 | Status code | Description                                        |
 | ---         | ---                                                |
 | 183         | Your incoming call status, __status: ringing__     |
 | 200         | Your incoming call status, __status: answered, canceled, call ended__ |
-| 1002        | Your already in a call                             |
+| 1002        | You are already in a call                         |
 
-
-## Reject call
+## Reject Call
 
 Reject an incoming call.
 
 ```js
-piopiy.reject();
+monipy.reject();
 ```
 
 #### HTTP status codes
-
-PIOPIY platform represents the following status code to identify the errors.
 
 | Status code | Description                                        |
 | ---         | ---                                                |
 | 200         | Your incoming call status, __status: hangup__      |
-| 1002        | Currently, there is no ongoing calls               |
+| 1002        | Currently, there are no ongoing calls              |
 
+## Terminate Call
 
-
-## Terminate call
-
-Hangup the ongoing call.
+Hang up the ongoing call.
 
 ```js
-piopiy.terminate();
+monipy.terminate();
 ```
 
 #### HTTP status codes
-
-PIOPIY platform represents the following status code to identify the errors.
 
 | Status code | Description                                        |
 | ---         | ---                                                |
 | 200         | Your ongoing call status, __status: hangup__       |
-| 1002        | Currently, there is no ongoing calls               |
-
-
-## Send DTMF digit
-
-Send the digits as dtmf. Digits can be any of the following one character strings: "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "*", "#"
-
-```js
-piopiy.sendDtmf(DTMF_DIGIT);
-```
-
-#### HTTP status codes
-
-PIOPIY platform represents the following status code to identify the errors.
-
-| Status code | Description                                        |
-| ---         | ---                                                |
-| 200         | DTMF digit received                                |
-| 1002        | DTMF not allowed or ongoing call not found         |
-| 1005        | Invalid DTMF type                                  |
-
-
-
-## Mute Call
-
-Mute an incoming or outgoing call.
-
-```js
-piopiy.mute();
-```
-
-## Unmute Call
-
-Mute an incoming or outgoing call.
-
-```js
-piopiy.unMute();
-```
-
-## Hold Call
-
-Mute an incoming or outgoing call.
-
-```js
-piopiy.hold();
-```
-
-#### HTTP status codes
-
-PIOPIY platform represents the following status code to identify the errors.
-
-| Status code | Description                                                 |
-| ---         | ---                                                         |
-| 200         | Hold your current call                                      |
-| 1002        | Your call is already on hold or there is no call found to hold |
-
-
-## Unhold Call
-
-Mute an incoming or outgoing call.
-
-```js
-piopiy.unHold();
-```
-
-#### HTTP status codes
-
-PIOPIY platform represents the following status code to identify the errors.
-
-| Status code | Description                                        |
-| ---         | ---                                                |
-| 200         | Unhold your current call                           |
-| 1002        | First hold a call to unhold it or there is no call found to unhold                   |
-
+| 1002        | Currently, there are no ongoing calls              |
 
 ## Logout 
 
-Logout 
+Logout from the MONIPY SDK.
 
 ```js
-piopiy.logout();
+monipy.logout();
 ```
 
 #### HTTP status codes
 
-PIOPIY platform represents the following status code to identify the errors.
-
 | Status code | Description                                        |
 | ---         | ---                                                |
-| 200         | You have logged out sucessfully                    |
-| 1002        | To logout you need to login first                  |
+| 200         | You have logged out successfully                   |
+| 1002        | To log out, you need to log in first               |
+
